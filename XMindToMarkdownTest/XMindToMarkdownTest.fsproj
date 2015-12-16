@@ -56,6 +56,30 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="XMindContentXmlTest.fs" />
+    <Compile Include="MarkdownTest.fs" />
+    <Content Include="paket.references" />
+    <Content Include="sample-xmind-content.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App.config" />
+    <None Include="sample.xmind">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <ProjectReference Include="..\XMindToMarkdown\XMindToMarkdown.fsproj">
+      <Name>XMindToMarkdown</Name>
+      <Project>{3559c3dc-4793-4372-bdc4-a2ca5c23a226}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1')">
       <ItemGroup>
@@ -139,28 +163,4 @@
       </ItemGroup>
     </When>
   </Choose>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="XMindContentXmlTest.fs" />
-    <Compile Include="MarkdownTest.fs" />
-    <Content Include="paket.references" />
-    <Content Include="sample-xmind-content.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App.config" />
-    <None Include="sample.xmind">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-    <ProjectReference Include="..\XMindToMarkdown\XMindToMarkdown.fsproj">
-      <Name>XMindToMarkdown</Name>
-      <Project>{3559c3dc-4793-4372-bdc4-a2ca5c23a226}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-  </ItemGroup>
 </Project>
