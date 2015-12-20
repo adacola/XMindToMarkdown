@@ -1,7 +1,7 @@
 source https://www.nuget.org/api/v2/
 
 nuget FsCheck ~> 2.2.3 framework: >= net452
-nuget FSharp.Core 4.0.0.1 framework: >= net452
+nuget FSharp.Core 4.0.0.1 framework: >= net452, redirects: on
 nuget FSharp.Data ~> 2.2.5
 nuget FsUnit ~> 1.4.1.0 framework: >= net452
 nuget NUnit ~> 2.6.4 framework: >= net452
