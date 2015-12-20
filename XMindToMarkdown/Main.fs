@@ -30,8 +30,8 @@ let main args =
     if File.Exists input |> not then printfn "%s ファイルが存在しません" input; 1 else
     
     let contentXml = XMindContentXml.getContentXml input
-    let sheet = XMindContentXml.parseXml contentXml
-    let result = Markdown.xmindSheetToMarkdown startHeaderLevel endHeaderLevel sheet
+    let content = XMindContentXml.parseXml contentXml
+    let result = Markdown.xmindContentToMarkdown startHeaderLevel endHeaderLevel content
 
     File.WriteAllText(output, result, Text.UTF8Encoding false)
     0

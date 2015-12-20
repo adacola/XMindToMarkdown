@@ -10,7 +10,7 @@ type Line = {
     Topic : Topic
 }
 
-let xmindSheetToMarkdown startHeaderLevel endHeaderLevel (xmindSheet : Sheet) =
+let xmindContentToMarkdown startHeaderLevel endHeaderLevel (xmindContent : Content) =
     if startHeaderLevel < 1 || 6 < startHeaderLevel then
         sprintf "startHeaderLevel(%d)は1～6の範囲内でなければなりません" startHeaderLevel |> invalidArg "startHeaderLevel"
     if endHeaderLevel < startHeaderLevel || 6 < endHeaderLevel then
@@ -41,5 +41,5 @@ let xmindSheetToMarkdown startHeaderLevel endHeaderLevel (xmindSheet : Sheet) =
             yield! xmindTopicToLines (level + 1) topic.Children
     }
 
-    [xmindSheet.RootTopic] |> xmindTopicToLines startHeaderLevel |> Seq.toList
+    [for sheet in xmindContent.Sheets -> sheet.RootTopic] |> xmindTopicToLines startHeaderLevel |> Seq.toList
     |> linesToString

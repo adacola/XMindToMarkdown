@@ -11,8 +11,10 @@ module ParseXml =
     [<Test>]
     let ``サンプルXMLのparseXmlに成功すること`` () =
         let actual = XMindContentXml.ContentXmlProvider.GetSample() |> string |> XMindContentXml.parseXml
-        actual.Title |> should equal "シート 1"
-        let rootTopic = actual.RootTopic
+        actual.Sheets |> should haveLength 2
+        let sheet = actual.Sheets |> List.head
+        sheet.Title |> should equal "main sheet"
+        let rootTopic = sheet.RootTopic
         rootTopic.ID |> should equal "0cj4hcipk20ffvvq1cp1j90t6u"
         rootTopic.Title |> should equal "root topic"
         rootTopic.Children |> should haveLength 2

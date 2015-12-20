@@ -17,6 +17,10 @@ type Sheet = {
     RootTopic : Topic
 }
 
+type Content = {
+    Sheets : Sheet list
+}
+
 let parseXml contentXml =
     let rec parseTopic (topic : ContentXmlProvider.Topic) =
         let children =
@@ -26,9 +30,12 @@ let parseXml contentXml =
         { ID = topic.Id; Title = topic.Title.String |> Option.get; Children = children }
 
     let xml = ContentXmlProvider.Parse contentXml
-    let title = xml.Sheet.Title.String |> Option.get
-    let rootTopic = xml.Sheet.Topic |> parseTopic
-    { Title = title; RootTopic = rootTopic }
+    let sheets =
+        xml.Sheets |> Array.map (fun sheet ->
+            let title = sheet.Title.String |> Option.get
+            let rootTopic = sheet.Topic |> parseTopic
+            { Title = title; RootTopic = rootTopic })
+    { Sheets = sheets |> Array.toList }
 
 let getContentXml xmindFilePath =
     use zipArchive = ZipFile.OpenRead xmindFilePath
