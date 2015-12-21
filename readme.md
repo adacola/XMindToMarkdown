@@ -20,6 +20,56 @@ options:
 --help [-h|/h|/help|/?]: display this list of options.
 ```
 
+## 実行サンプル
+
+### input
+
+![マインドマップのサンプル画面](sample.png)
+
+### output
+
+```markdown
+# root topic
+
+## main topic 1
+
+### sub topic 1-1
+
+#### newlinetopic
+
+##### 5
+
+###### 6
+
+* 7
+    * 8
+
+### sub topic 1-2
+
+#### marker
+
+#### relation to
+
+## main topic 2
+
+### サブトピック 2-1
+
+#### relation from
+
+### D言語
+
+# next topic
+
+## next main topic 1
+
+### next sub topic
+
+## next main topic 2
+
+### hoge
+```
+
+
 ## 制限
 
 * 無料版のXMindの範囲で可能な機能が入ったファイルしか対応していません。おそらくPro版の機能を含めたファイルを読みこませるとエラーになります。
